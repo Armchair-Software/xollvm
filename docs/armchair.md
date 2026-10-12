@@ -33,6 +33,7 @@ control, pass `-DOBF_ENABLE_RDTSC_STRETCH=OFF`.
 With a native plugin built against the matching Clang installation:
 
 ```sh
+python3 utils/test_llvm_compat.py --compiler clang++ --plugin build/Obfuscator.so
 python3 utils/test_whole_program.py --compiler clang++ --plugin build/Obfuscator.so
 python3 utils/test_string_sections.py --compiler clang++ --plugin build/Obfuscator.so
 python3 utils/test_embind_signatures.py --compiler clang++ --plugin build/Obfuscator.so

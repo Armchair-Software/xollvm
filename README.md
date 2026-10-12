@@ -4,6 +4,8 @@
 
 # xollvm
 
+Armchair's `dev-armchair` integration branch: [features, validation, and Pillbox migration](docs/armchair.md).
+
 **🛡️ Annotation-driven LLVM 22 & 23 obfuscator · new pass manager · zero LLVM source edits**
 
 ![LLVM](https://img.shields.io/badge/LLVM-22.x%20%7C%2023.x-262D3A?logo=llvm&logoColor=white)
