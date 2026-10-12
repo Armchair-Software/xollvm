@@ -51,3 +51,21 @@ The Emscripten probe covers WASM64, LTO, actual Embind callbacks, embedded
 JavaScript, arithmetic obfuscation, all three string ciphers, and retained
 catalogue views. Pillbox's browser-loader suite can also use this plugin through
 its existing `--plugin` argument.
+
+## Validation of the initial integration
+
+- Native Clang/LLVM 21.1.8: plugin builds with rdtscStretch both ON and OFF;
+  global-selection, section metadata, Embind symbol exclusion, and multi-TU
+  persistent-string tests pass. Branch-transformation tests pass with both builds.
+- Emscripten 6.0.9 / LLVM 24 revision
+  `510126255f89d693717c1ce7105b593f995f07c1`: target-limited plugin builds without
+  X86 headers; all five WASM64 probe variants and Pillbox's Debug, Release, and
+  obfuscated Release browser-loader suites pass.
+- The focused native branch-transformation test also passes with LLVM 24.
+  That check reused the WASM-targeted plugin and produces target-feature warnings
+  from its embedded AES stub; the WASM64 and browser checks use the intended
+  target and do not require that cross-target setup.
+
+LLVM 22/23 compatibility paths have not been built in this environment. The
+API guards cover the LLVM 23 branch-instruction/pass-policy changes, but an
+upstream CI matrix should exercise those installations before merging upstream.
